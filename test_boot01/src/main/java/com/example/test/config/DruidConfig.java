@@ -23,8 +23,8 @@ import java.util.Map;
 public class DruidConfig {
 
 
-    @Bean
     @ConfigurationProperties(prefix =  "spring.datasource")
+    @Bean
     public DataSource druidSource(){
         return new DruidDataSource();
     }
@@ -35,13 +35,13 @@ public class DruidConfig {
      * @return
      */
     @Bean
-    public ServletRegistrationBean  statViewSevlet(){
+    public ServletRegistrationBean  statViewServlet(){
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         Map<String,String> initParams = new HashMap<>();
         initParams.put("loginUsername","admin");//设置后台登录名
         initParams.put("loginPassword","123456");//设置后台登录密码
         initParams.put("allow","");//默认就是允许所有访问 ,设置允许的IP访问
-        initParams.put("deny","192.168.15.21");//拒绝的IP的访问
+        initParams.put("deny","");//拒绝的IP的访问
         bean.setInitParameters(initParams);
         return bean;
     }
