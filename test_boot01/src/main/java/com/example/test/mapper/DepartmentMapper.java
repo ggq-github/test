@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.*;
 * @date: 2020/6/4 13:47
 * @description: 功能描述：//指定这是一个操作数据库的mapper
 */
-//@Mapper
-public interface DepartmentMapper {
+@Mapper
+public interface DepartmentMapper{
 
     @Select("select * from department where id=#{id}")
     public Department getDeptById(Integer id);

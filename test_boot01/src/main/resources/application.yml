@@ -23,7 +23,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-#    filters: stat,wall,log4j
+    #filters: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
@@ -34,6 +34,11 @@ spring:
       ddl-auto: update
  #    控制台显示SQL
     show-sql: true
+  redis:
+    host: 127.0.0.1
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml #mappers.xml扫描加载路径
   config-location: classpath:mybatis/mybatis-config.xml # mybatis 主配置文件
+#  configuration:
+#    map-underscore-to-camel-case: true   #开启驼峰命名
+#debug: true

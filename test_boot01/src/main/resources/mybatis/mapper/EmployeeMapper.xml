@@ -7,10 +7,21 @@
 
     public void insertEmp(Employee employee);-->
     <select id="getEmpById" resultType="com.example.test.bean.Employee">
-        SELECT * FROM employee WHERE id=#{id}
+        SELECT id,lastName,email,gender,dept_id  FROM employee WHERE id=#{id}
     </select>
 
     <insert id="insertEmp">
-        INSERT INTO employee(lastName,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
+        INSERT INTO employee(lastName,email,gender,dept_Id) VALUES (#{lastName},#{email},#{gender},#{deptId})
     </insert>
+
+    <update id="updateEmp" >
+        UPDATE employee
+        <set>
+            <if test="lastName != null and lastName != ''">lastName = #{lastName}, </if>
+            <if test="email != null and email != ''">email = #{email}, </if>
+            <if test="gender != null and gender != ''">gender = #{gender}, </if>
+            <if test="deptId != null and deptId != ''">dept_Id = #{deptId}, </if>
+        </set>
+        WHERE id=#{id}
+    </update>
 </mapper>
