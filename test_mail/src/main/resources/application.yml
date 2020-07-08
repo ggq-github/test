@@ -1,0 +1,12 @@
+server:
+  port: 8082
+spring:
+  mail:
+    username: 18554218043@163.com
+    password: MQQUIPIFRLHOMQHT
+    host: smtp.163.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
