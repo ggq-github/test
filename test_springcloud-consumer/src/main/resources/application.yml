@@ -1,0 +1,15 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: test-springcloud-consumer
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+     #defaultZone: http://eureka8000.com:8000/eureka,http://eureka8001.com:8001/eureka
+      defaultZone: http://localhost:8000/eureka
+  instance:
+    prefer-ip-address: true     #访问路径可以显示IP地址
+    lease-renewal-interval-in-seconds: 1  #设置每1秒向服务端发送心跳
+    lease-expiration-duration-in-seconds: 2 #设置如果2秒没有发送心跳表示 自己 宕机了
+    instance-id: springcloud-consumer  #自定义eureka 上该服务的名字.

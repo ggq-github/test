@@ -1,0 +1,40 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: test-springcloud-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root1234
+    #配置阿里数据源 以及数据源相关配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+  jpa:
+    hibernate:
+      #     更新或者创建数据表结构
+      ddl-auto: update
+    #    控制台显示SQL
+    show-sql: true
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+     #defaultZone: http://eureka8000.com:8000/eureka,http://eureka8001.com:8001/eureka #集群配置
+     defaultZone:  http://localhost:8000/eureka
+  instance:
+    prefer-ip-address: true     #访问路径可以显示IP地址
+    lease-renewal-interval-in-seconds: 1  #设置每1秒向服务端发送心跳
+    lease-expiration-duration-in-seconds: 2 #设置如果2秒没有发送心跳表示 自己 宕机了
+    instance-id: springcloud-provider8003  #自定义eureka 上该服务的名字.
+
